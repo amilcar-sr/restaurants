@@ -44,7 +44,7 @@ class MainActivity : BaseActivity() {
                 NetworkService.generateAPI(it.token)
 
                 //Requesting the first batch of restaurants from the endpoint
-                //using User's location (dummy in case the user didn't provide location permissions)
+                //using the user's location (dummy in case the user didn't provide location permissions)
                 viewModel.onLocationFetched(it.location)
                 viewModel.fetchRestaurants(0).subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())

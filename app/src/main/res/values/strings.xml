@@ -12,5 +12,5 @@
     <string name="yes_please">Yes, Please</string>
     <string name="no_thanks">No, Thanks</string>
     <string name="location_request_title">Location Permission</string>
-    <string name="location_request_message">We need to your location in order to locate the restaurants tha are closer to you, would you like to enable this feature?</string>
+    <string name="location_request_message">We need to know your location in order to locate the restaurants tha are closer to you, would you like to enable this feature?</string>
 </resources>

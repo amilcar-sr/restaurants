@@ -75,14 +75,18 @@ class MainFragment : Fragment() {
 
     private fun placeListFragment() {
         val listFragment = childFragmentManager.findFragmentByTag(RestaurantListFragment.TAG)
+        
         childFragmentManager.beginTransaction()
+            .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
             .replace(R.id.fragmentContainer, listFragment ?: RestaurantListFragment(), RestaurantListFragment.TAG)
             .commit()
     }
 
     private fun placeMapFragment() {
         val mapFragment = childFragmentManager.findFragmentByTag(RestaurantMapFragment.TAG)
+
         val transaction = childFragmentManager.beginTransaction()
+            .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
             .replace(R.id.fragmentContainer, mapFragment ?: RestaurantMapFragment(), RestaurantMapFragment.TAG)
 
         if (mapFragment == null) {

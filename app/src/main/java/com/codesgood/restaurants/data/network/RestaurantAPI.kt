@@ -7,7 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 /**
- * REST endpoints the app is able to hit
+ * REST endpoints the app is able to reach
  *
  * @author Amilcar Serrano
  */
