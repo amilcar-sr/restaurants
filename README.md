@@ -1,5 +1,4 @@
 # Restaurants
-=========
 
 This application doesn't include the credentials for **clientId** nor **clientSecret**, you'll have to get those values from the assignment document and place them in the **BaseActivity#tokenObservable** (BaseActivity : 41) in order to make it work.
 
