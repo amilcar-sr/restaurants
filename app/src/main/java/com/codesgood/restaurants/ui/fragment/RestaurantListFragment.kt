@@ -41,12 +41,12 @@ class RestaurantListFragment : Fragment(), RestaurantsAdapter.RestaurantListList
 
         val restaurants = model.restaurants.value
         if (restaurants != null && restaurants.size > 0 && restaurantAdapter.itemCount == 0) {
-            restaurantAdapter.addRestaurants(restaurants)
+            restaurantAdapter.updateRestaurants(restaurants, model.restaurantsInArea)
         }
 
         model.restaurants.observe(this, Observer {
             no_items_text.visibility = if (it.size > 0) View.GONE else View.VISIBLE
-            restaurantAdapter.updateData(it, model.restaurantsInArea)
+            restaurantAdapter.updateRestaurants(it, model.restaurantsInArea)
         })
     }
 

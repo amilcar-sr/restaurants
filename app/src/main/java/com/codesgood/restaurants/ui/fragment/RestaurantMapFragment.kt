@@ -63,6 +63,7 @@ class RestaurantMapFragment : Fragment(), OnMapReadyCallback {
 
         model.restaurants.observe(this, Observer {
             markers.forEach(Marker::remove)
+            markers.clear()
             addMarkersToMap(it, map)
         })
     }
@@ -91,7 +92,9 @@ class RestaurantMapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onDestroy() {
         super.onDestroy()
-        disposable.dispose()
+        if (::disposable.isInitialized) {
+            disposable.dispose()
+        }
     }
 
     companion object {

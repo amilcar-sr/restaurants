@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.codesgood.restaurants.R
 import com.codesgood.restaurants.data.model.Restaurant
-import com.codesgood.restaurants.data.network.NetworkConstants
 
 class RestaurantsAdapter(
     private val restaurants: ArrayList<Restaurant>,
@@ -21,18 +20,12 @@ class RestaurantsAdapter(
         fun onNewDataRequired(offset: Int)
     }
 
-    fun addRestaurants(newRestaurants: ArrayList<Restaurant>) {
-        val currentSize = itemCount - 1
-        val newSize = itemCount + newRestaurants.size - 2
+    fun updateRestaurants(newRestaurants: ArrayList<Restaurant>, totalInArea: Int) {
+        totalRestaurantsInArea = totalInArea
 
-        restaurants.addAll(newRestaurants)
-        notifyItemRangeInserted(currentSize, newSize)
-    }
-
-    fun updateData(newRestaurants: ArrayList<Restaurant>, restaurantsInArea: Int) {
         restaurants.clear()
         restaurants.addAll(newRestaurants)
-        totalRestaurantsInArea = restaurantsInArea
+
         notifyDataSetChanged()
     }
 
@@ -65,7 +58,7 @@ class RestaurantsAdapter(
 
             holder.itemView.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, if (position % 2 == 0) R.color.white else R.color.light_grey))
         } else {
-            listener.onNewDataRequired(restaurants.size / NetworkConstants.MAX_REQUEST)
+            listener.onNewDataRequired(restaurants.size)
         }
     }
 
