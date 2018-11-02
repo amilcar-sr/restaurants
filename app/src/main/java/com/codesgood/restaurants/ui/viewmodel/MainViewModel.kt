@@ -11,6 +11,11 @@ import com.codesgood.restaurants.data.network.NetworkService
 import com.google.android.gms.maps.model.LatLng
 import io.reactivex.Observable
 
+/**
+ * Responsible of holding and serving the selected/user location and restaurants shown in the app
+ *
+ * @author Amilcar Serrano
+ */
 class MainViewModel : ViewModel() {
 
     //Location to be used to fetch the restaurants
@@ -57,7 +62,7 @@ class MainViewModel : ViewModel() {
     }
 
     /**
-     * Retrieves an Observable so observers are notified when new restaurants are fetched
+     * Retrieves an observable that emits when new restaurants are fetched from the endpoint
      * @param offset Offset to be used in the restaurants request
      */
     fun fetchRestaurants(offset: Int): Observable<RestaurantResponse> {

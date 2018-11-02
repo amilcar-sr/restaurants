@@ -5,12 +5,12 @@
     android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/restaurants_recycler"
+        android:id="@+id/restaurantsRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <TextView
-        android:id="@+id/no_items_text"
+        android:id="@+id/noItemsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

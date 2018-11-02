@@ -16,10 +16,20 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_restaurant_list.*
 
+/**
+ * Responsible of showing the list of restaurants and ask for more of them if needed
+ *
+ * @author Amilcar Serrano
+ */
 class RestaurantListFragment : Fragment(), RestaurantsAdapter.RestaurantListListener {
 
+    //Adapter that binds the restaurants items into the RecyclerView
     private lateinit var restaurantAdapter: RestaurantsAdapter
+
+    //ViewModel that provides the list of restaurants and updates regarding them
     private lateinit var model: MainViewModel
+
+    //Disposable observer tha is destroyed when needed
     private lateinit var disposableObserver: Disposable
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,16 +46,18 @@ class RestaurantListFragment : Fragment(), RestaurantsAdapter.RestaurantListList
 
         restaurantAdapter = RestaurantsAdapter(ArrayList(), model.restaurantsInArea, this)
 
-        restaurants_recycler.layoutManager = LinearLayoutManager(context)
-        restaurants_recycler.adapter = restaurantAdapter
+        restaurantsRecycler.layoutManager = LinearLayoutManager(context)
+        restaurantsRecycler.adapter = restaurantAdapter
 
+        //Adding restaurants to the list if needed
         val restaurants = model.restaurants.value
         if (restaurants != null && restaurants.size > 0 && restaurantAdapter.itemCount == 0) {
             restaurantAdapter.updateRestaurants(restaurants, model.restaurantsInArea)
         }
 
+        //Listening to restaurants updates
         model.restaurants.observe(this, Observer {
-            no_items_text.visibility = if (it.size > 0) View.GONE else View.VISIBLE
+            noItemsText.visibility = if (it.size > 0) View.GONE else View.VISIBLE
             restaurantAdapter.updateRestaurants(it, model.restaurantsInArea)
         })
     }

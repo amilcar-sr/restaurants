@@ -1,5 +1,10 @@
 package com.codesgood.restaurants.data.model
 
+/**
+ * Restaurant's data class/model.
+ *
+ * @author Amilcar Serrano
+ */
 data class Restaurant(
     val deliveryTimeMinMinutes: String = "",
     val validReviewsCount: Int = 0,

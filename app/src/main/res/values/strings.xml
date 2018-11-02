@@ -9,4 +9,8 @@
     <string name="got_it">Got It</string>
     <string name="selected_location">Selected Location</string>
     <string name="no_items_found">No items found in the zone</string>
+    <string name="yes_please">Yes, Please</string>
+    <string name="no_thanks">No, Thanks</string>
+    <string name="location_request_title">Location Permission</string>
+    <string name="location_request_message">We need to your location in order to locate the restaurants tha are closer to you, would you like to enable this feature?</string>
 </resources>

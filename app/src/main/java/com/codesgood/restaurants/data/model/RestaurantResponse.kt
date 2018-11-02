@@ -2,6 +2,11 @@ package com.codesgood.restaurants.data.model
 
 import androidx.lifecycle.ViewModel
 
+/**
+ * RestaurantResponse's data class/model.
+ *
+ * @author Amilcar Serrano
+ */
 data class RestaurantResponse(
     val total: Int = 0,
     val max: Int = 0,

@@ -6,11 +6,20 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-
+/**
+ * NetworkServices serves a window to the backend endpoints by holding a Singleton reference to a RestaurantAPI.
+ *
+ * @author Amilcar Serrano
+ */
 object NetworkService {
-    private val BASE_URL = " http://stg-api.pedidosya.com/public/v1/"
+
+    //Endpoint's base url
+    private const val BASE_URL = " http://stg-api.pedidosya.com/public/v1/"
+
+    //RestAPI that allows us to executo HTTP requests
     private lateinit var REST_API: RestaurantAPI
 
+    //Singleton method, initializes the API and/or returns it
     fun getAPI(): RestaurantAPI {
         if (!::REST_API.isInitialized) {
             generateAPI()
@@ -19,6 +28,7 @@ object NetworkService {
         return REST_API
     }
 
+    //Responsible of setting up the API taking the headers in account if they have been fetched
     fun generateAPI(authHeader: String? = null) {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
@@ -30,6 +40,7 @@ object NetworkService {
             httpClient.addInterceptor {
                 val original = it.request()
 
+                //Endpoint's headers
                 val request = original.newBuilder()
                     .header("Authorization", authHeader)
                     .header("Content-Type", "application/json")
