@@ -37,7 +37,7 @@ abstract class BaseActivity : AppCompatActivity() {
     //Location provider needed to find the user's last known location
     private lateinit var locationProvider: FusedLocationProviderClient
 
-    //Observable used to requests the endpoint's token
+    //Observable used to request the endpoint's token
     private val tokenObservable = NetworkService.getAPI().getToken(PrivateConstants.CLIENT_ID, PrivateConstants.CLIENT_SECRET)
 
     //Observable used to notify when the user's location has been acquired
@@ -105,7 +105,7 @@ abstract class BaseActivity : AppCompatActivity() {
         locationProvider = LocationServices.getFusedLocationProviderClient(this)
 
         if (savedInstanceState == null) {
-            //We request the location permission and explain why we need them if needed, only if the app doesn't have location permissions
+            //We request the location permission and explain why we need it if needed, this happens only if the app doesn't have location permission
             if (!hasLocationPermission()) {
                 //Verifies if we should show a permission or an explanation to the user
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {

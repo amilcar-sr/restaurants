@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers
  */
 class MainActivity : BaseActivity() {
 
-    //ViewModel that will held the selected location and list of restaurant's nearby
+    //ViewModel that will hold and serve the selected location and list of restaurant's nearby
     private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +36,7 @@ class MainActivity : BaseActivity() {
     override fun listenForTokenAndLocation() {
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
+        //Listening for auth token and user's location
         disposableObserver = tokenAndLocationObservable.subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnError { error -> Log.e("TokenOrLocationError", error.message) }

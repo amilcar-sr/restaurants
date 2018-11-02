@@ -41,12 +41,15 @@ class RestaurantsAdapter(
     }
 
     override fun getItemCount(): Int {
+        //We add an extra item to the end if the list of restaurants is less than the total of restaurants in the area.
+        //This additional item indicates we'll fetch more restaurants
         return restaurants.size + if (restaurants.size < totalRestaurantsInArea) 1 else 0
     }
 
     override fun getItemViewType(position: Int): Int {
         val finishedLoading = restaurants.size == totalRestaurantsInArea
 
+        //We won't show the loading item if the list of restaurants has been completely downloaded
         return if (finishedLoading) {
             RESTAURANT_VIEW_TYPE
         } else {
